@@ -107,7 +107,7 @@ response.addEventListener("mouseover", () => {
 // ************************* KeyPress Event ************************* //
 
 const keypressContainer = document.querySelector(".keypress");
-const key = document.getElementById('key');
+const key = document.getElementById("key");
 
 // Il es possible d'ajouter des sons à sa page avec Js.
 
@@ -118,31 +118,31 @@ const key = document.getElementById('key');
 //   audio.play();
 // }
 
-// Pour faire une boite à son.
-const ring = (key) => {
-  const audio = new Audio();
-  audio.src = key + ".mp3";
-  audio.play();
-}
+// Pour faire une boite à son ->
+// const ring = (key) => {
+//   const audio = new Audio();
+//   audio.src = key + ".mp3";
+//   audio.play();
+// }
 
 // Le (e) dans la fonction + un log(e) va nous dire quel touche à été appuyer sur notre page.
-document.addEventListener ('keypress', (e) => {
-  key.textContent = e.key;
+// document.addEventListener ('keypress', (e) => {
+//   key.textContent = e.key;
 
-  if (e.key === "m") {
-    keypressContainer.style.background = "blue";
-  } else if (e.key === "p") {
-    keypressContainer.style.background = "grey";
-  } else {
-    keypressContainer.style.background = "red";
-  }
+//   if (e.key === "m") {
+//     keypressContainer.style.background = "blue";
+//   } else if (e.key === "p") {
+//     keypressContainer.style.background = "grey";
+//   } else {
+//     keypressContainer.style.background = "red";
+//   }
 
-  // Pour un son simple ->
-  // ring();
+//   // Pour un son simple ->
+//   // ring();
 
-  // Pour une boite à son
-  ring(e.key);
-});
+//   // Pour une boite à son
+//   ring(e.key);
+// });
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
@@ -150,15 +150,54 @@ document.addEventListener ('keypress', (e) => {
 
 const nav = document.querySelector("nav");
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   // Avec (window.scrollY) ont obtient la valeur en pixel de ce qui a été scroller.
   console.log(window.scrollY);
 
   if (window.scrollY > 120) {
     nav.style.top = 0;
   } else {
-    nav.style.top = ("-50px");
+    nav.style.top = "-50px";
   }
 });
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
+// ************************* Form Event ************************* //
+
+const inputName = document.querySelector('input[type="text"]');
+const select = document.querySelector("select");
+const form = document.querySelector("form");
+let pseudo = "";
+let language = "";
+
+
+// (e) -> pour récupérer les datas de l'évenement.
+inputName.addEventListener("input", (e) => {
+  // log(e.target.value) -> pour savoir ce qui a été écrit dans l'input en temps réel.
+  pseudo = e.target.value;
+});
+
+select.addEventListener("input", (e) => {
+  // log(e.target.value) -> pour savoir ce qui a été choisi.
+  language = e.target.value;
+});
+
+form.addEventListener('submit', (e) => {
+  // Avec "e.preventDefault()" on annule le changement de page.
+  e.preventDefault();
+  
+  // Checked les CGV pour pouvoir Valider.
+  if (cgv.checked) {
+    // .innerHTML sert à mettre du HTML dans du Js.
+    document.querySelector('form > div').innerHTML = `
+    <h3>Pseudo : ${pseudo}</h3>
+    <h4>Langage préféré : ${language}</h4>
+    `;
+  } else {
+    alert('Veuillez accepter les CGV');
+  }
+});
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
