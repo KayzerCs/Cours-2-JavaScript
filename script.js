@@ -3,6 +3,8 @@
 // * (e) = évenement
 // * key = touche
 // * mouse = souris
+// * Bubbling = lis les évenement de Bas en Haut
+// * Usecapture = lis les évenement de Haut en Bas
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
@@ -66,7 +68,7 @@ btn2.addEventListener("click", () => {
 // ************************* Mouse Event ************************* //
 
 // Pour avoir les donnés de OU la souris a été ->
-// window.addEventListener("mousemove", (e) => {
+// * window.addEventListener("mousemove", (e) => {
 // console.log(e);
 // })
 
@@ -82,7 +84,10 @@ window.addEventListener("mousemove", (e) => {
 });
 
 // Quand il y a qu'une seul ligne après la (=>) on n'est pas obligé de mettre des {}.
-window.addEventListener("mousedown", () => mousemove.style.transform = "scale(2) translate(-25%, -25%)");
+window.addEventListener(
+  "mousedown",
+  () => (mousemove.style.transform = "scale(2) translate(-25%, -25%)")
+);
 
 window.addEventListener("mouseup", () => {
   mousemove.style.transform = "scale(1) translate(-50%, -50%)";
@@ -118,7 +123,7 @@ const key = document.getElementById("key");
 // }
 
 // Pour faire une boite à son ->
-// const ring = (key) => {
+// * const ring = (key) => {
 //   const audio = new Audio();
 //   audio.src = key + ".mp3";
 //   audio.play();
@@ -170,7 +175,6 @@ const form = document.querySelector("form");
 let pseudo = "";
 let language = "";
 
-
 // (e) -> pour récupérer les datas de l'évenement.
 inputName.addEventListener("input", (e) => {
   // log(e.target.value) -> pour savoir ce qui a été écrit dans l'input en temps réel.
@@ -182,19 +186,19 @@ select.addEventListener("input", (e) => {
   language = e.target.value;
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
   // Avec "e.preventDefault()" on annule le changement de page.
   e.preventDefault();
-  
+
   // Checked les CGV pour pouvoir Valider.
   if (cgv.checked) {
     // .innerHTML sert à mettre du HTML dans du Js.
-    document.querySelector('form > div').innerHTML = `
+    document.querySelector("form > div").innerHTML = `
     <h3>Pseudo : ${pseudo}</h3>
     <h4>Langage préféré : ${language}</h4>
     `;
   } else {
-    alert('Veuillez accepter les CGV');
+    alert("Veuillez accepter les CGV");
   }
 });
 
@@ -212,12 +216,38 @@ window.addEventListener("load", () => {
 // ************************* ForEach ************************* //
 
 // Pour sélectionner plusieurs classes en même temps (d'ou l'interet de mettre 2 classe au balise) ->
-const boxes = document.querySelectorAll('.box');
+const boxes = document.querySelectorAll(".box");
 
 boxes.forEach((box) => {
-  box.addEventListener('click', (e) => {
-  e.target.style.transform = "scale(0.7)";
+  box.addEventListener("click", (e) => {
+    e.target.style.transform = "scale(0.7)";
   });
 });
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
+// ************************* addEventListener Vs onclick ************************* //
+
+// document.body.onclick = () => {
+//   console.log("click");
+// };
+
+// Avec "addEventListener" on peut accoler autant d'évenemnt qu'on veut sur notre élement. Qu'avec "onclick" ce n'est pas possible.
+
+// * Bubbling => fin ( de base l'eventlistener est paramétré en mode Bubbling).
+document.body.addEventListener("click", () => {
+  console.log("click 1");
+});
+
+// * Usecapture
+document.body.addEventListener(
+  "click",
+  () => {
+    console.log("click 2");
+  },
+  true
+);
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
+
