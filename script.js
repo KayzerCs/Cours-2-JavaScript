@@ -1,4 +1,4 @@
-// ************************* SELECTEURS ************************* //
+// ************************* Selecteur ************************* //
 
 //Pour selectionné une "balise" avec JS -> document.querySelector("h4");
 //Pour selectionné une "balise" en CSS il faut -> Ex: ("h4");
@@ -13,7 +13,7 @@
 // console.log(baliseHTML);
 // baliseHTML.style.background = "yellow";
 
-// ************************* CLICK EVENT ************************* //
+// ************************* Click Event ************************* //
 
 // const questionContainer = document.querySelector(".click-event");
 // questionContainer.addEventListener("événement", () function).
@@ -27,7 +27,7 @@
 // questionContainer.classList.toggle("question-clicked");
 // });
 
-// ************************* CLICK EXERCICE N°1 ************************* //
+// ************************* Click Exercice N°1 ************************* //
 
 const questionContainer = document.querySelector(".click-event");
 // Deux façon de nomé un ID.
@@ -51,18 +51,19 @@ btn2.addEventListener("click", () => {
 
 // Ordre de priorité : <div> > #id > .class > baliseHTML
 
-// ************************* MOUSE EVENT ************************* //
+// ************************* Mouse Event ************************* //
 
 // Pour avoir les donnés de OU la souris a été ->
 // window.addEventListener("mousemove", (e) => {
 // console.log(e);
 // })
 
-// ************************* Mouse Move EXERCICE N°1 ************************* //
+// ************************* Mouse Move Exercice N°1 ************************* //
 
 // Pour qu'il est un cercle qui suis la souris.
 const mousemove = document.querySelector(".mousemove");
 
+// Le (e) dans la fonction + un log(e) va nous dire ou la souris à été sur notre page.
 window.addEventListener("mousemove", (e) => {
   mousemove.style.left = e.pageX + "px";
   mousemove.style.top = e.pageY + "px";
@@ -87,4 +88,45 @@ questionContainer.addEventListener("mouseout", () => {
 
 response.addEventListener("mouseover", () => {
   response.style.transform = "rotate(2deg)";
+});
+
+
+// ************************* KeyPress Event ************************* //
+
+const keypressContainer = document.querySelector(".keypress");
+const key = document.getElementById('key');
+
+// Il es possible d'ajouter des sons à sa page avec Js.
+
+// Un son simple ->
+// const ring = () => {
+//   const audio = new Audio();
+//   audio.src = "Enter.mp3";
+//   audio.play();
+// }
+
+// Pour faire une boite à son.
+const ring = (key) => {
+  const audio = new Audio();
+  audio.src = key + ".mp3";
+  audio.play();
+}
+
+// Le (e) dans la fonction + un log(e) va nous dire quel touche à été appuyer sur notre page.
+document.addEventListener ('keypress', (e) => {
+  key.textContent = e.key;
+
+  if (e.key === "m") {
+    keypressContainer.style.background = "blue";
+  } else if (e.key === "p") {
+    keypressContainer.style.background = "grey";
+  } else {
+    keypressContainer.style.background = "red";
+  }
+
+  // Pour un son simple ->
+  // ring();
+
+  // Pour une boite à son
+  ring(e.key);
 });
