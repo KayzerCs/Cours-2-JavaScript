@@ -81,9 +81,8 @@ window.addEventListener("mousemove", (e) => {
   mousemove.style.top = e.pageY + "px";
 });
 
-window.addEventListener("mousedown", () => {
-  mousemove.style.transform = "scale(2) translate(-25%, -25%)";
-});
+// Quand il y a qu'une seul ligne après la (=>) on n'est pas obligé de mettre des {}.
+window.addEventListener("mousedown", () => mousemove.style.transform = "scale(2) translate(-25%, -25%)");
 
 window.addEventListener("mouseup", () => {
   mousemove.style.transform = "scale(1) translate(-50%, -50%)";
@@ -210,3 +209,15 @@ window.addEventListener("load", () => {
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
+// ************************* ForEach ************************* //
+
+// Pour sélectionner plusieurs classes en même temps (d'ou l'interet de mettre 2 classe au balise) ->
+const boxes = document.querySelectorAll('.box');
+
+boxes.forEach((box) => {
+  box.addEventListener('click', (e) => {
+  e.target.style.transform = "scale(0.7)";
+  });
+});
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
