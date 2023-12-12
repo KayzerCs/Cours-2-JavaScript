@@ -50,3 +50,41 @@ btn2.addEventListener("click", () => {
 });
 
 // Ordre de priorité : <div> > #id > .class > baliseHTML
+
+// ************************* MOUSE EVENT ************************* //
+
+// Pour avoir les donnés de OU la souris a été ->
+// window.addEventListener("mousemove", (e) => {
+// console.log(e);
+// })
+
+// ************************* Mouse Move EXERCICE N°1 ************************* //
+
+// Pour qu'il est un cercle qui suis la souris.
+const mousemove = document.querySelector(".mousemove");
+
+window.addEventListener("mousemove", (e) => {
+  mousemove.style.left = e.pageX + "px";
+  mousemove.style.top = e.pageY + "px";
+});
+
+window.addEventListener("mousedown", () => {
+  mousemove.style.transform = "scale(2) translate(-25%, -25%)";
+});
+
+window.addEventListener("mouseup", () => {
+  mousemove.style.transform = "scale(1) translate(-50%, -50%)";
+  mousemove.style.border = "2px solid teal";
+});
+
+questionContainer.addEventListener("mouseenter", () => {
+  questionContainer.style.background = "rgba(0,0,0,0.6)";
+});
+
+questionContainer.addEventListener("mouseout", () => {
+  questionContainer.style.background = "pink";
+});
+
+response.addEventListener("mouseover", () => {
+  response.style.transform = "rotate(2deg)";
+});
