@@ -251,10 +251,51 @@ document.body.addEventListener(
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
 // ************************* Stop Propagation ************************* //
-questionContainer.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
+// questionContainer.addEventListener("click", (e) => {
+//   e.stopPropagation();
+// });
 
 // removeEventListener
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
+// ****** BOM = Brother Object Model ****** //
+
+// console.log(window.innerHeight);
+// console.log(window.scrollY);
+
+// Création d'une Pop Up.
+// window.open('https://google.com', 'cours js', 'height=600, width=800');
+// Pour fermer la fénêtre ->
+// window.close();
+
+// Evénement adosses à Window
+// alert("hello");
+
+// confirm
+btn2.addEventListener("click", () => {
+  confirm("voulez vous vraiment vous tromper ?");
+});
+
+let answerPrompt = "";
+// prompt
+btn1.addEventListener("click", () => {
+  answerPrompt = prompt("Entrez votre nom !");
+
+  questionContainer.innerHTML = "<h3>Bravo " + answerPrompt + "</h3>";
+});
+
+setTimeout(() => {
+  // Toute une logique a écécuter
+  questionContainer.style.borderRadius = "300px";
+}, 2000);
+// ^ temps en millisecondes avant de déclencher
+
+setInterval(() => {
+  // Pour pouvoir sédenter son HTML il faut mettre les guillemet comme ça -> (``).
+  document.body.innerHTML += `
+      <div class='box'>
+        <h2>Nouvelle Boite !</h2>
+      </div> 
+    `;
+}, 100);
