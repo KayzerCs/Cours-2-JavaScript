@@ -356,3 +356,15 @@ function error(err) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error, options);
+
+// ****************** History ****************** //
+
+// L'historique de notre page.
+console.log(history);
+// Pour faire automatique retourner en arrière.
+// window.history.back();
+// Pour faire retourner de (x) page en arrière.
+// history.go(-2)
+
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
