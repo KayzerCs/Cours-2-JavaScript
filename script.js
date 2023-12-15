@@ -156,13 +156,13 @@ const nav = document.querySelector("nav");
 
 window.addEventListener("scroll", () => {
   // Avec (window.scrollY) ont obtient la valeur en pixel de ce qui a été scroller.
-  console.log(window.scrollY);
+  // console.log(window.scrollY);
 
-  if (window.scrollY > 120) {
-    nav.style.top = 0;
-  } else {
-    nav.style.top = "-50px";
-  }
+  // if (window.scrollY > 120) {
+  //   nav.style.top = 0;
+  // } else {
+  //   nav.style.top = "-50px";
+  // }
 });
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
@@ -207,9 +207,9 @@ form.addEventListener("submit", (e) => {
 // ************************* Laod Event ************************* //
 
 // Ce qui se trouve dans load, sera afficher une fois que la totalité de la page sera chargé.
-window.addEventListener("load", () => {
-  console.log("Document chargé");
-});
+// window.addEventListener("load", () => {
+//   console.log("Document chargé");
+// });
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
@@ -235,18 +235,18 @@ boxes.forEach((box) => {
 // Avec "addEventListener" on peut accoler autant d'évenemnt qu'on veut sur notre élement. Qu'avec "onclick" ce n'est pas possible.
 
 // * Bubbling => fin ( de base l'eventlistener est paramétré en mode Bubbling).
-document.body.addEventListener("click", () => {
-  console.log("click 1");
-});
+// document.body.addEventListener("click", () => {
+//   console.log("click 1");
+// });
 
-// * Usecapture
-document.body.addEventListener(
-  "click",
-  () => {
-    console.log("click 2");
-  },
-  true
-);
+// // * Usecapture
+// document.body.addEventListener(
+//   "click",
+//   () => {
+//     console.log("click 2");
+//   },
+//   true
+// );
 
 // https://gomakethings.com/what-is-that-third-argument-on-the-vanilla-js-addeventlistener-method-and-when-do-you-need-it/
 
@@ -313,13 +313,13 @@ window.addEventListener("click", (e) => {
 // ****************** Location -> Localisation ****************** //
 
 // "href" Savoir ou on es avec un lien.
-console.log(location.href);
+// console.log(location.href);
 // "host" Avoir le nom du site.
-console.log(location.host);
+// console.log(location.host);
 // "patchname" Avoir l'élément après le host.
-console.log(location.patchname);
+// console.log(location.patchname);
 // "search" Affiche le contenue de la recherche utilisateurs.
-console.log(location.search);
+// console.log(location.search);
 
 // Au lancement de la page sa remplace le lien de notre site vers un autre lien.
 // location.replace("https://chat.openai.com/");
@@ -336,35 +336,41 @@ console.log(location.search);
 
 // Avec Navigator on peut aussi Localiser -> https://developer.mozilla.org/fr/docs/Web/API/Geolocation/getCurrentPosition
 
-var options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
+// var options = {
+//   enableHighAccuracy: true,
+//   timeout: 5000,
+//   maximumAge: 0,
+// };
 
-function success(pos) {
-  var crd = pos.coords;
+// function success(pos) {
+//   var crd = pos.coords;
 
-  console.log("Votre position actuelle est :");
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude : ${crd.longitude}`);
-  console.log(`La précision est de ${crd.accuracy} mètres.`);
-}
+//   console.log("Votre position actuelle est :");
+//   console.log(`Latitude : ${crd.latitude}`);
+//   console.log(`Longitude : ${crd.longitude}`);
+//   console.log(`La précision est de ${crd.accuracy} mètres.`);
+// }
 
-function error(err) {
-  console.warn(`ERREUR (${err.code}): ${err.message}`);
-}
+// function error(err) {
+//   console.warn(`ERREUR (${err.code}): ${err.message}`);
+// }
 
-navigator.geolocation.getCurrentPosition(success, error, options);
+// navigator.geolocation.getCurrentPosition(success, error, options);
 
 // ****************** History ****************** //
 
 // L'historique de notre page.
-console.log(history);
+// console.log(history);
 // Pour faire automatique retourner en arrière.
 // window.history.back();
 // Pour faire retourner de (x) page en arrière.
 // history.go(-2)
 
-
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+
+// ****************** SetProporty ****************** //
+
+window.addEventListener("mousemove", (e) => {
+  nav.style.setProperty("--x", e.layerX + "px");
+  nav.style.setProperty("--y", e.layerY + "px");
+});
