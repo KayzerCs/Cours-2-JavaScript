@@ -291,11 +291,21 @@ setTimeout(() => {
 }, 2000);
 // ^ temps en millisecondes avant de déclencher
 
-setInterval(() => {
+// Avec sa on eut faire pop qlq chose tout les (x) temps. Pour pas que cela se face à l'infini on met "let interval".
+let interval = setInterval(() => {
   // Pour pouvoir sédenter son HTML il faut mettre les guillemet comme ça -> (``).
   document.body.innerHTML += `
       <div class='box'>
         <h2>Nouvelle Boite !</h2>
       </div> 
     `;
-}, 100);
+}, 1000); // Temps en milliseconde
+
+// "clearInterval(interval);" dans la déclaration d'évenement pour pas que l'Interval pop a l'infini.
+window.addEventListener("click", (e) => {
+  // Sert à supprimer un élément du DOM -> "e.target.remove();"
+  // e.target.remove();
+  clearInterval(interval);
+});
+
+
