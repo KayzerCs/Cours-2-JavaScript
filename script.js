@@ -248,6 +248,8 @@ document.body.addEventListener(
   true
 );
 
+// https://gomakethings.com/what-is-that-third-argument-on-the-vanilla-js-addeventlistener-method-and-when-do-you-need-it/
+
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
 // ************************* Stop Propagation ************************* //
@@ -259,7 +261,7 @@ document.body.addEventListener(
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
-// ****** BOM = Brother Object Model ****** //
+// ****************** BOM = Brother Object Model ****************** //
 
 // console.log(window.innerHeight);
 // console.log(window.scrollY);
@@ -291,26 +293,24 @@ setTimeout(() => {
 }, 2000);
 // ^ temps en millisecondes avant de déclencher
 
-// Avec sa on eut faire pop qlq chose tout les (x) temps. Pour pas que cela se face à l'infini on met "let interval".
-let interval = setInterval(() => {
-  // Pour pouvoir sédenter son HTML il faut mettre les guillemet comme ça -> (``).
-  document.body.innerHTML += `
-      <div class='box'>
-        <h2>Nouvelle Boite !</h2>
-      </div> 
-    `;
-}, 1000); // Temps en milliseconde
+// Avec "setInterval" on eut faire pop qlq chose tout les (x) temps. Pour pas que cela se face à l'infini on met "let interval".
+// let interval = setInterval(() => {
+// Pour pouvoir sédenter son HTML il faut mettre les guillemet comme ça -> (``).
+//   document.body.innerHTML += `
+//       <div class='box'>
+//         <h2>Nouvelle Boite !</h2>
+//       </div>
+//     `;
+// }, 1000); // Temps en milliseconde
 
 // "clearInterval(interval);" dans la déclaration d'évenement pour pas que l'Interval pop a l'infini.
 window.addEventListener("click", (e) => {
   // Sert à supprimer un élément du DOM -> "e.target.remove();"
   // e.target.remove();
-  clearInterval(interval);
+  // clearInterval(interval);
 });
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
-
-// ****** Location -> Localisation ****** //
+// ****************** Location -> Localisation ****************** //
 
 // "href" Savoir ou on es avec un lien.
 console.log(location.href);
@@ -331,4 +331,28 @@ console.log(location.search);
 
 // Cette technique est très utiles pour envoyer un utilisateur à un endroit précis.
 
-// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
+// ****************** Navigator ****************** //
+// console.log(navigator.userAgent);
+
+// Avec Navigator on peut aussi Localiser -> https://developer.mozilla.org/fr/docs/Web/API/Geolocation/getCurrentPosition
+
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function success(pos) {
+  var crd = pos.coords;
+
+  console.log("Votre position actuelle est :");
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude : ${crd.longitude}`);
+  console.log(`La précision est de ${crd.accuracy} mètres.`);
+}
+
+function error(err) {
+  console.warn(`ERREUR (${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
