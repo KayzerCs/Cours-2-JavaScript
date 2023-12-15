@@ -308,4 +308,27 @@ window.addEventListener("click", (e) => {
   clearInterval(interval);
 });
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
 
+// ****** Location -> Localisation ****** //
+
+// "href" Savoir ou on es avec un lien.
+console.log(location.href);
+// "host" Avoir le nom du site.
+console.log(location.host);
+// "patchname" Avoir l'élément après le host.
+console.log(location.patchname);
+// "search" Affiche le contenue de la recherche utilisateurs.
+console.log(location.search);
+
+// Au lancement de la page sa remplace le lien de notre site vers un autre lien.
+// location.replace("https://chat.openai.com/");
+
+// Autre méthode pour envoyer sur un autre site
+// window.onload = () => {
+//   location.href = "https://chat.openai.com/";
+// };
+
+// Cette technique est très utiles pour envoyer un utilisateur à un endroit précis.
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// //
